@@ -49,15 +49,15 @@ namespace libnetrom
 		assert(data != nullptr);
 		assert(length > 0);
 
-		struct timeval timeval;
-		timeval.tv_sec  = 0;
-		timeval.tv_usec = 0;
+		struct timeval tv;
+		tv.tv_sec  = 0;
+		tv.tv_usec = 0;
 
-		fd_set fd_set;
-		FD_ZERO(&fd_set);
-		FD_SET(m_socket, &fd_set);
+		fd_set fds;
+		FD_ZERO(&fds);
+		FD_SET(m_socket, &fds);
 		
-		int n = ::select(m_socket + 1, &fd_set, nullptr, nullptr, &timeval);
+		int n = ::select(m_socket + 1, &fds, nullptr, nullptr, &tv);
 		if (n < 0)
 		{
 			m_errno = errno;

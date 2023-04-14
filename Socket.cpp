@@ -61,11 +61,11 @@ namespace libnetrom
 		if (n < 0)
 		{
 			m_errno = errno;
-			return -1;
+			return -2;
 		}
 		else if (n == 0)
 		{
-			return 0;
+			return -1;
 		}
 		else
 		{
@@ -73,7 +73,7 @@ namespace libnetrom
 			if (n < 0)
 			{
 				m_errno = errno;
-				return -1;
+				return -2;
 			}
 			else
 			{
